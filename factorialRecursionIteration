@@ -1,0 +1,59 @@
+package task6;
+
+import java.util.*;
+
+import static java.lang.System.*;
+
+public class Factorial {
+		
+		public static void iterativeFactorial() {
+				Scanner keyboard = new Scanner(System.in);
+				int inputValue = keyboard.nextInt();
+				keyboard.close();
+				
+			long fact = 1;
+			 for (int i = 2; i <= inputValue; i++) {
+			        fact = fact * i;
+			    }
+			 out.println("Factorial of " + inputValue + " by iteration is: " + fact);}
+		
+			 public static void recursiveFactorial(){  
+			  int i,fact=1;  
+			  int number=5;   //It is the number to calculate factorial    
+			  for(i=1;i<=number;i++){    
+			      fact=fact*i;    
+			  }    
+			  System.out.println("Factorial of "+number+" by recursion is: "+fact);    
+			 }  
+			 
+
+			public static void main(String[] args) {
+				iterativeFactorial();
+				recursiveFactorial();
+	
+}
+}	
+		
+		
+		//		public static void recursiveFactorial(long inputValue){
+////			Scanner keyboard = new Scanner(System.in);
+////			int inputValue = keyboard.nextInt();
+////			keyboard.close();
+//			
+//		long fact = 1;
+//		int recursionControl = 2;
+//		if(recursionControl < inputValue) {
+//			fact = fact * recursionControl;
+//			recursionControl++;
+//			recursiveFactorial(fact);
+//			
+//		}
+//	
+//		out.println(fact);}
+//			
+//		public static void main(String[] args) {
+//			//iteration();
+//			recursiveFactorial(10);
+//		}
+
+		
