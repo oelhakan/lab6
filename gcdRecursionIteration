@@ -1,0 +1,38 @@
+package task6;
+
+import static java.lang.System.out;
+
+public class GreatestCommonDivisor {
+	
+	public static void iterativeGCD(int n1, int n2) {
+		    int gcd = 1;
+		    for (int i = 1; i <= n1 && i <= n2; i++) {
+		        if (n1 % i == 0 && n2 % i == 0) {
+		            gcd = i;
+		        }
+		    }
+		    out.println("Greatest Common Divisor of " + n1 + " and " + n2 + " by iteration is: " + gcd);
+		}
+	
+    public static int recursiveGCD(int n1, int n2)
+    {
+        if (n2 != 0)
+            return recursiveGCD(n2, n1 % n2);
+        else
+            return n1;
+    }
+
+	    public static void main(String[] args) {
+	        int n1 = 366, n2 = 60;
+	        int gcd = recursiveGCD(n1, n2);
+
+	        System.out.printf("Greatest Common Divisor of %d and %d by recursion is: %d\n", n1, n2, gcd);
+	        
+	        iterativeGCD(366, 60);
+	       
+	        
+	    }
+	    }
+
+
+
