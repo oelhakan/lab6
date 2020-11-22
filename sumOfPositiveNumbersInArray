@@ -1,0 +1,39 @@
+package task6;
+import static java.lang.System.out;
+
+public class ArraySum_LargerThanZero {
+	
+	 public static int positiveElementSumIteration(int[] arr) {
+	        int sum = 0;
+	        for (int i : arr) {				//CHECK EACH ELEMENT, IF IT IS GREATER THAN ZERO ADD IT TO THE SUM.
+	            if (i > 0) sum += i;
+	        }
+	        return sum;
+	    }
+
+	  public static int positiveElementSumRecursion(int[] arr) {
+	        return positiveElementSumRecursion(arr, 0, 0);
+	    }
+
+	   public static int positiveElementSumRecursion(int[] arr, int index, int sum) {
+	        if (index >= arr.length) return sum;							//RETURN THE RESULT ONCE ALL OF THE ELEMENTS ARE CHECKED.
+	        if (arr[index] > 0) return positiveElementSumRecursion(arr, index + 1, sum + arr[index]);
+	        //IF THE ELEMENT IS GREATER THAN ZERO, CALL THE FUNCTION AGAIN WITH THE NEXT ELEMENT AND ADD THE CHECKED ELEMENT TO THE SUM.
+	        return positiveElementSumRecursion(arr, index + 1, sum);
+	    }
+	   
+	   public static void main(String[] args) {
+		   	out.println("Sum of Positive Elements by Iteration is : ");
+	        out.println(positiveElementSumIteration(new int[]{20, 10, 40, 30, -100, 0, 3, -7}));
+	        out.println(positiveElementSumIteration(new int[]{-8, -15, -30, 0}));
+	        out.println(positiveElementSumIteration(new int[]{}));
+	        out.println();
+	        out.println("Sum of Positive Elements by Recursion is :  ");
+	        out.println(positiveElementSumRecursion(new int[]{20, 10, 40, 30, -100, 0, 3, -7}));
+	        out.println(positiveElementSumRecursion(new int[]{-8, -15, -30, 0}));
+	        out.println(positiveElementSumRecursion(new int[]{}));
+	        out.println();
+	   }
+    }
+
+
