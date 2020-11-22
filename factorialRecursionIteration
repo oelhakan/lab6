@@ -13,47 +13,25 @@ public class Factorial {
 				
 			long fact = 1;
 			 for (int i = 2; i <= inputValue; i++) {
-			        fact = fact * i;
+			        fact = fact * i;	//MULTIPLY ALL NATURAL NUMBERS SMALLER THAN THE INPUT NUMBER TO GET FACTORIAL
 			    }
 			 out.println("Factorial of " + inputValue + " by iteration is: " + fact);}
-		
-			 public static void recursiveFactorial(){  
-			  int i,fact=1;  
-			  int number=5;   //It is the number to calculate factorial    
-			  for(i=1;i<=number;i++){    
-			      fact=fact*i;    
-			  }    
-			  System.out.println("Factorial of "+number+" by recursion is: "+fact);    
-			 }  
+		//*******************************************//
+		static int recursiveFactorial(int n){    
+			  if (n == 0)    
+			    return 1;    //MULTIPLY THE NUMBER BY NUMBER-1 UNTIL NUMBER-1 = 1
+			  else    
+			    return(n * recursiveFactorial(n-1));    
+			 }    
+		    
+			 
 			 
 
 			public static void main(String[] args) {
 				iterativeFactorial();
-				recursiveFactorial();
+				out.println("Factorial of 5 by recursion is: " + (recursiveFactorial(5)));	
+				//5 is the number to calculate factorial  
+				
 	
 }
 }	
-		
-		
-		//		public static void recursiveFactorial(long inputValue){
-////			Scanner keyboard = new Scanner(System.in);
-////			int inputValue = keyboard.nextInt();
-////			keyboard.close();
-//			
-//		long fact = 1;
-//		int recursionControl = 2;
-//		if(recursionControl < inputValue) {
-//			fact = fact * recursionControl;
-//			recursionControl++;
-//			recursiveFactorial(fact);
-//			
-//		}
-//	
-//		out.println(fact);}
-//			
-//		public static void main(String[] args) {
-//			//iteration();
-//			recursiveFactorial(10);
-//		}
-
-		
