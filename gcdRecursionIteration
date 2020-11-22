@@ -7,9 +7,9 @@ public class GreatestCommonDivisor {
 	public static void iterativeGCD(int n1, int n2) {
 		    int gcd = 1;
 		    for (int i = 1; i <= n1 && i <= n2; i++) {
-		        if (n1 % i == 0 && n2 % i == 0) {
-		            gcd = i;
-		        }
+		        if (n1 % i == 0 && n2 % i == 0) {	
+		            gcd = i;	//CHECK EVERY NUMBER THAT IS SMALLER THAN N1 OR N2 THEN CHECK IF IT DIVIDES BOTH
+		        }				//N1 AND N2, IF IT DOES SET GCD TO THAT NUMBER
 		    }
 		    out.println("Greatest Common Divisor of " + n1 + " and " + n2 + " by iteration is: " + gcd);
 		}
@@ -18,17 +18,17 @@ public class GreatestCommonDivisor {
     {
         if (n2 != 0)
             return recursiveGCD(n2, n1 % n2);
-        else
-            return n1;
+        else	//DIVIDE NUMBER 2 BY THE REMAINDER OF THE DIVISION OF N1 AND N2,  THEN SET N1 AS N2 THEN RUN IT AGAIN
+            return n1; //AND AGAIN UNTIL N2 IS ZERO. WHEN N2 IS ZERO PRINT RESULT
     }
 
 	    public static void main(String[] args) {
-	        int n1 = 366, n2 = 60;
+	        int n1 = 10, n2 = 30;
 	        int gcd = recursiveGCD(n1, n2);
 
 	        System.out.printf("Greatest Common Divisor of %d and %d by recursion is: %d\n", n1, n2, gcd);
 	        
-	        iterativeGCD(366, 60);
+	        iterativeGCD(30, 10);
 	       
 	        
 	    }
