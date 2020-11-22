@@ -1,0 +1,73 @@
+package task6;
+
+import java.io.File;
+
+import static java.lang.System.out;
+
+public class DiskTask1 {
+
+	public static final String fileLocation = "/Users/onurelhakan/Desktop/filetestfolder/";
+
+	public static String checkExtension(File file) {
+		String fileName = file.getName();
+		int pointLocation = fileName.lastIndexOf('.');
+		return (pointLocation == -1) ? "" : fileName.substring(pointLocation + 1);
+	}//IF POINTLOCATION EQUALS -1 RETURN "" IF IT IS NOT RETURN THE SUBSTRING THAT CONTAINS THE PART AFTER THE POINT
+	// IN THE FILES NAME
+	
+	static int txtLengthFolder(String path) {
+		int totalLength = 0;
+		File dir = new File(fileLocation + path); //SET DIR TO THE FILE IN PATH DIRECTORY
+		for (File file : dir.listFiles()) { 
+			String temporary = checkExtension(file); //CHECK EXTENSIONS OF EVERY FILE IN DIRECTORY
+			if (temporary.equals("txt")) {
+				totalLength += file.length(); //ADD FILES LENGTH IF THE FILE IS A .TXT FILE
+			}
+		}
+		return totalLength; //RETURN TOTAL LENGTH
+	}
+
+	static int txtLengthFolderAndSubFolders(String path) {
+		int totalLength = 0;
+		File dir = new File(fileLocation + path.replace(fileLocation, ""));
+		for (File file : dir.listFiles()) {
+			String temporary = checkExtension(file);
+			if (file.isDirectory()) {totalLength += txtLengthFolderAndSubFolders(file.getPath()); 
+			    //CHECK THE DIRECTORY AND ALL OF ITS SUBFOLDERS TO SEE IF IT HAS WANTED EXTENSION
+				//IF IT DOES ADD THE LENGTH OF FILES IN THAT SUBFOLDER
+			}
+			if (temporary.equals("txt")) {
+				totalLength += file.length(); //ADD FILES LENGTH IF THE FILE IS A .TXT FILE
+			}
+		}
+		return totalLength; //RETURN TOTAL LENGTH
+	}
+
+	static float avgTxtLengthInDir(String path) {
+		return (float) txtLengthFolderAndSubFolders(path) / numberOfExtensions(path, "txt");
+	}	//CALCULATE THE TOTAL LENGTH IN THE FOLDER AND DIVIDE IT BY THE FILE EXTENSIONS TO GET AVARAGE FILE LENGTH
+	
+	static int numberOfExtensions(String path, String extension) {
+		int extensionCount = 0;
+		File dir = new File(fileLocation + path.replace(fileLocation, ""));
+		for (File file : dir.listFiles()) {
+			if (file.isDirectory()) { //CHECK THE DIRECTORY AND ALL OF ITS SUBFOLDERS TO SEE IF IT HAS WANTED EXTENSION
+				extensionCount += numberOfExtensions(file.getPath(), extension);
+				//IF IT DOES ADD TO THE NUMBER OF EXTENSIONS
+			} else if (checkExtension(file).equals(extension))
+				extensionCount++;
+		}
+		return extensionCount;
+	}
+
+
+
+	public static void main(String[] args) {
+
+		out.println("Total Length of .txt Files in the Given Folder is: " + (txtLengthFolder("texts")));
+		out.println(("Total Length of .txt Files in the Given Folder and it's SubFolders is: " + txtLengthFolderAndSubFolders("texts")));
+		out.println(("Avarage Length of .txt Files in the Given Folder and it's SubFolders is: " + avgTxtLengthInDir("texts")));
+		out.println(("Total Number of .txt Files in the Given Folder is: " + numberOfExtensions("texts", "txt")));
+
+	}
+}
