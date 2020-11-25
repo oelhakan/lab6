@@ -28,10 +28,36 @@ public class Factorial {
 			 
 
 			public static void main(String[] args) {
+				System.out.println("Enter Two Integers to Get the Factorials by Iteration and Recursion!");
+				Scanner keyboard = new Scanner(System.in);
+				int inputValue = keyboard.nextInt();
 				iterativeFactorial();
-				out.println("Factorial of 5 by recursion is: " + (recursiveFactorial(5)));	
-				//5 is the number to calculate factorial  
+				out.println("Factorial of 5 by recursion is: " + (recursiveFactorial(inputValue)));	 
 				
 	
 }
 }	
+		
+		
+		//		public static void recursiveFactorial(long inputValue){
+////			Scanner keyboard = new Scanner(System.in);
+////			int inputValue = keyboard.nextInt();
+////			keyboard.close();
+//			
+//		long fact = 1;
+//		int recursionControl = 2;
+//		if(recursionControl < inputValue) {
+//			fact = fact * recursionControl;
+//			recursionControl++;
+//			recursiveFactorial(fact);
+//			
+//		}
+//	
+//		out.println(fact);}
+//			
+//		public static void main(String[] args) {
+//			//iteration();
+//			recursiveFactorial(10);
+//		}
+
+		
