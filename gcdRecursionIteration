@@ -2,6 +2,8 @@ package task6;
 
 import static java.lang.System.out;
 
+import java.util.Scanner;
+
 public class GreatestCommonDivisor {
 	
 	public static void iterativeGCD(int n1, int n2) {
@@ -23,12 +25,17 @@ public class GreatestCommonDivisor {
     }
 
 	    public static void main(String[] args) {
-	        int n1 = 10, n2 = 30;
+	    	System.out.println("Enter Two Integers to Get Their Greatest Common Divisor!");
+	    	Scanner keyboard = new Scanner(System.in);
+	    	int n1 = keyboard.nextInt();
+	    	int n2 = keyboard.nextInt();
+	    	keyboard.close();
+	      //  int n1 = 10, n2 = 30;
 	        int gcd = recursiveGCD(n1, n2);
 
 	        System.out.printf("Greatest Common Divisor of %d and %d by recursion is: %d\n", n1, n2, gcd);
 	        
-	        iterativeGCD(30, 10);
+	        iterativeGCD(n1, n2);
 	       
 	        
 	    }
